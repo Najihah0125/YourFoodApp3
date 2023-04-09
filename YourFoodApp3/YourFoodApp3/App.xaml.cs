@@ -25,7 +25,7 @@ namespace YourFoodApp3
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MasterDetailPageYourFood();
         }
 
         protected override void OnStart()
