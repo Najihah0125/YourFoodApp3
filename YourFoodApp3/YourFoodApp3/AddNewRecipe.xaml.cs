@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific.AppCompat;
 using Xamarin.Forms.Xaml;
 
 namespace YourFoodApp3
@@ -15,6 +16,17 @@ namespace YourFoodApp3
         public AddNewRecipe()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            collectionView.ItemsSource = await App.Database.GetAddedRecipeAsync();  
+        }
+
+        async void OnButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RecipeForm());
         }
     }
 }

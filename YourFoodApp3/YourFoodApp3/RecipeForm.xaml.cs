@@ -16,5 +16,20 @@ namespace YourFoodApp3
         {
             InitializeComponent();
         }
+
+        async void OnSubmitClick(object sender, EventArgs e)
+        {
+            await App.Database.AddRecipeAsync(new AddedRecipe
+            {
+                RecipeName = inputRecipeName.Text,
+                Description = inputDescription.Text,
+                Time = inputTime.Text,
+                Ingredients = inputIngredients.Text,
+                Steps= inputSteps.Text,
+
+                
+        });
+            await Navigation.PushAsync(new AddNewRecipe());
+        }
     }
 }

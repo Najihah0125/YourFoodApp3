@@ -3,10 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="YourFoodApp3.RecipeForm">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="Recipe name" FontSize="Medium" TextDecorations="Underline"/>
+                    <Entry x:Name="inputRecipeName" ClearButtonVisibility="WhileEditing"/>
+                    <Label Text="Description" FontSize="Medium" TextDecorations="Underline" Margin="0,20,0,0" />
+                    <Entry x:Name="inputDescription" ClearButtonVisibility="WhileEditing"/>
+                    <Label Text="Add a photo" FontSize="Medium" TextDecorations="Underline" Margin="0,20,0,10"/>
+                    <FlexLayout Direction="Row"
+                        AlignItems="Center" Margin="0,0,0,20"
+                        JustifyContent="SpaceEvenly">
+                        <Button x:Name="addPhotoButton" Text="Upload a photo" VerticalOptions="CenterAndExpand" WidthRequest="200" BackgroundColor="#FF8400" TextColor="White" FontAttributes="Bold"/>
+                    </FlexLayout>
+                    <Label Text="Cooking time" FontSize="Medium" TextDecorations="Underline" Margin="0,20,0,10"/>
+                    <Entry x:Name="inputTime" ClearButtonVisibility="WhileEditing"/>
+                    <Label Text="Ingredients" FontSize="Medium" TextDecorations="Underline" Margin="0,20,0,10"/>
+                    <Entry x:Name="inputIngredients" ClearButtonVisibility="WhileEditing"/>
+                    <Label Text="Steps to cook" FontSize="Medium" TextDecorations="Underline" Margin="0,20,0,10"/>
+                    <Entry x:Name="inputSteps" ClearButtonVisibility="WhileEditing" Margin="0,0,0,40"/>
+                </StackLayout>
+
+                <FlexLayout Direction="Row"
+                AlignItems="Center" Margin="0,0,0,50"
+                JustifyContent="SpaceEvenly">
+                    <Button x:Name="cancelButton" Text="Cancel"  VerticalOptions="CenterAndExpand" WidthRequest="110" BackgroundColor="White" BorderColor="#FF8400" BorderWidth="2" FontAttributes="Bold"/>
+                    <Button x:Name="submitButton" Text="Submit" Clicked="OnSubmitClick" VerticalOptions="CenterAndExpand" WidthRequest="110" BackgroundColor="#FF8400" TextColor="White" FontAttributes="Bold"/>
+                </FlexLayout>
+            </StackLayout>
+            
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
