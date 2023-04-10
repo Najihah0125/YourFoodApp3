@@ -14,5 +14,11 @@ namespace YourFoodApp3
         {
             InitializeComponent();
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            collectionView.ItemsSource = await App.Database.GetPreloadedRecipeAsync();
+        }
     }
 }

@@ -8,12 +8,16 @@ namespace YourFoodApp3
 {
     public class Database
     {
-        private readonly SQLiteAsyncConnection _database;
+        public readonly SQLiteAsyncConnection _database;
 
         public Database(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<AddedRecipe>();
+            _database.CreateTableAsync<PreloadedRecipe>();
+
+         
+
         }
 
         //get all added recipes
@@ -27,6 +31,19 @@ namespace YourFoodApp3
         {
             return _database.InsertAsync(recipe);
         }
+
+        //get all preloaded recipe
+        public Task<List<PreloadedRecipe>> GetPreloadedRecipeAsync()
+        {
+            return _database.Table<PreloadedRecipe>().ToListAsync();
+        }
+
+        //preload table preloadrecipe
+        public Task<int> PreloadRecipeAsync(PreloadedRecipe preloadrecipe)
+        {
+            return _database.InsertAsync(preloadrecipe);
+        }
+
     }
     
 
