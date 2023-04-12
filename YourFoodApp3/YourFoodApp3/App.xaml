@@ -3,6 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="YourFoodApp3.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="IconBookmark">&#xf02e;</x:String>
+            <x:String x:Key="IconTrash">&#xf2ed;</x:String>
+            <x:String x:Key="IconPencil">&#xf303;</x:String>
+            <x:String x:Key="IconAngleRight">&#xf105;</x:String>
+            <x:String x:Key="IconTime">&#xf017;</x:String>
 
+            <OnPlatform x:Key="FASolid" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Font Awesome 6 Free-Solid-900.otf" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="FARegular" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Font Awesome 6 Free-Regular-400.otf" />
+            </OnPlatform>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

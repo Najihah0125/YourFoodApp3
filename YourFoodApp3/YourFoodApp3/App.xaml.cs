@@ -31,20 +31,16 @@ namespace YourFoodApp3
         {
             InitializeComponent();
 
-            //insert preloaded recipes into preloadedrecipe table
-            preloadedRecipe = new List<PreloadedRecipe>();
+            //insert preloaded recipes into preloadedrecipe table - do it once only
+            //preloadedRecipe = new List<PreloadedRecipe>();
 
-            preloadedRecipe.Add(new PreloadedRecipe {Id = 1, RecipeName = "Mushroom & Tofu Stir-Fry", Description = "Quick and easy, making it a great go-to weeknight meal.", Time = "20 mins", Ingredients = "test", Steps = "test" });
-            preloadedRecipe.Add(new PreloadedRecipe {Id = 2, RecipeName = "Balsamic-Parmesan Sautéed Spinach", Description = "Quick and flavorful side dish.", Time = "15 mins", Ingredients = "test", Steps = "test" });
+            //preloadedRecipe.Add(new PreloadedRecipe { Id = 1, RecipeName = "Mushroom & Tofu Stir-Fry", Description = "Quick and easy, making it a great go-to weeknight meal.", Time = "20 mins", Ingredients = "test", Steps = "test" });
+            //preloadedRecipe.Add(new PreloadedRecipe { Id = 2, RecipeName = "Balsamic-Parmesan Sautéed Spinach", Description = "Quick and flavorful side dish.", Time = "15 mins", Ingredients = "test", Steps = "test" });
 
-            //var connection = Database.GetConnection();
-            //_conn = Database.GetConnection();
-            //_conn.InsertAllAsync(preloadedRecipe);
-
-            foreach (var recipe in preloadedRecipe)
-            {
-                Database._database.InsertAsync(recipe);
-            }
+            //foreach (var recipe in preloadedRecipe)
+            //{
+            //    Database._database.InsertAsync(recipe);
+            //}
 
             //navigate to main page
             MainPage = new MasterDetailPageYourFood();

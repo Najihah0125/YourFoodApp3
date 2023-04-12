@@ -15,9 +15,6 @@ namespace YourFoodApp3
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<AddedRecipe>();
             _database.CreateTableAsync<PreloadedRecipe>();
-
-         
-
         }
 
         //get all added recipes
