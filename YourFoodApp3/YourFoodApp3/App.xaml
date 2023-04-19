@@ -9,6 +9,7 @@
             <x:String x:Key="IconPencil">&#xf303;</x:String>
             <x:String x:Key="IconAngleRight">&#xf105;</x:String>
             <x:String x:Key="IconTime">&#xf017;</x:String>
+            <x:String x:Key="IconCirclePlus">&#xf055;</x:String>
 
             <OnPlatform x:Key="FASolid" x:TypeArguments="x:String">
                 <On Platform="Android" Value="Font Awesome 6 Free-Solid-900.otf" />
