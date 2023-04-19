@@ -41,6 +41,12 @@ namespace YourFoodApp3
             return _database.InsertAsync(preloadrecipe);
         }
 
+        //get bookmarked recipes
+        public Task<List<PreloadedRecipe>> GetBookmarkedRecipeAsync()
+        {
+            return _database.Table<PreloadedRecipe>().Where(recipe => recipe.Bookmark == "yes").ToListAsync();
+        }
+
     }
     
 
