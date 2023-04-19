@@ -20,11 +20,21 @@ namespace YourFoodApp3
 
         protected override async void OnAppearing()
         {
+            var added = App.Database.GetAddedRecipeAsync().Result;
+            if (added == null || added.Count == 0) 
+            {
+                AddedRecipeLabel.Text = "No recipe added yet";
+                collectionView.IsVisible = false;
+            } 
+            else
+            {
+                AddedRecipeLabel.IsVisible = false;
+            }
             base.OnAppearing();
             collectionView.ItemsSource = await App.Database.GetAddedRecipeAsync();  
         }
 
-        async void OnButtonClicked(object sender, EventArgs e)
+        async void OnPlusClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RecipeForm());
         }
