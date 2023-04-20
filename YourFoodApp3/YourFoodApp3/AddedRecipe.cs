@@ -14,5 +14,6 @@ namespace YourFoodApp3
         public string Time { get; set; }
         public string Ingredients { get; set; }
         public string Steps { get; set; }
+        public string Image { get; set; }
     }
 }

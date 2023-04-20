@@ -13,7 +13,7 @@ namespace YourFoodApp3
         
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         protected override async void OnAppearing()
@@ -22,22 +22,34 @@ namespace YourFoodApp3
             collectionView.ItemsSource = await App.Database.GetPreloadedRecipeAsync();
         }
 
-        private void OnBookmarkTapped(object sender, EventArgs e)
+        private async void OnBookmarkTapped(object sender, EventArgs e)
         {
-            Label tappedBookmark = (Label)sender;
+            Label tappedLabel = (Label)sender;
+            PreloadedRecipe item = tappedLabel.BindingContext as PreloadedRecipe;
 
-            //FontFamily fontFamily = bookmark.FontFamily;
+            if (item.Bookmark == "yes")
+            {                                
+                int rowId = item.Id;
+                await App.Database.UpdateBookmark(rowId, "no");
+                await DisplayAlert("Alert", "Removed from bookmark!", "OK");
+            }
+            else
+            {               
+                int rowId = item.Id;
+                await App.Database.UpdateBookmark(rowId, "yes");
+                await DisplayAlert("Alert", "Bookmarked!", "OK");
+            }
+        }
 
-            //if(tappedBookmark.FontFamily == (OnPlatform<string>)Application.Current.Resources["FASolid"]){
-            //    tappedBookmark.FontFamily = originalFont;
-            //}else
-            //{
-            //    originalFont = tappedBookmark.FontFamily;
-            //    tappedBookmark.FontFamily = (OnPlatform<string>)Application.Current.Resources["FASolid"];
-            //}
-            
-            //Label tappedLabel = (Label)sender;
-            //tappedLabel.FontFamily = (Xamarin.Forms.OnPlatform<string>)Application.Current.Resources["FASolid"];
+        private void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PreloadedRecipe recipe = (PreloadedRecipe)e.CurrentSelection.FirstOrDefault();
+
+            if (recipe != null) 
+            {
+                Navigation.PushAsync(new RecipeDetails(recipe));
+                ((CollectionView)sender).SelectedItem = null;
+            }
         }
     }
 }

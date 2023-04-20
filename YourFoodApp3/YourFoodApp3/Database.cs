@@ -47,8 +47,22 @@ namespace YourFoodApp3
             return _database.Table<PreloadedRecipe>().Where(recipe => recipe.Bookmark == "yes").ToListAsync();
         }
 
+        //get specific preloaded recipe
+        public Task<List<PreloadedRecipe>> GetSpecificPreloadedRecipeAsync(int recipeid)
+        {
+            return _database.Table<PreloadedRecipe>().Where(recipe => recipe.Id == recipeid).ToListAsync();
+        }
+
+        //update bookmark column in preloaded recipe table
+        public async Task UpdateBookmark(int rowId, string newBookmark)
+        {
+            var row = await _database.Table<PreloadedRecipe>().FirstOrDefaultAsync(data => data.Id == rowId);
+
+            if(row != null)
+            {
+                row.Bookmark = newBookmark;
+                await _database.UpdateAsync(row);
+            }
+        }
     }
-    
-
-
 }
