@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="AddedRecipeLabel" Text="No recipe added yet" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20"/>
-            <CollectionView x:Name="collectionView">
+            <CollectionView x:Name="collectionView" SelectionChanged="collectionView_SelectionChanged" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="0,0,0,0.5">

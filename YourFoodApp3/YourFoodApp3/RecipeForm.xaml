@@ -15,7 +15,13 @@
                         AlignItems="Center" Margin="0,0,0,20"
                         JustifyContent="SpaceEvenly">
                         <Button x:Name="addPhotoButton" Text="Upload a photo" Clicked="OnButtonClick" VerticalOptions="CenterAndExpand" WidthRequest="200" BackgroundColor="#FF8400" TextColor="White" FontAttributes="Bold"/>
-                        <Image x:Name="resultImage" />
+                        <Frame BackgroundColor="White" Grid.RowSpan="2" CornerRadius="5" Padding="10">
+                            <Image    
+                       x:Name="resultImage"    
+                       Aspect="Fill"    
+                       HeightRequest="100"    
+                       WidthRequest="100" />
+                        </Frame>
                     </FlexLayout>
                     <Label Text="Cooking time" FontSize="Medium" TextDecorations="Underline" Margin="0,20,0,10" TextColor="Black"/>
                     <Entry x:Name="inputTime" ClearButtonVisibility="WhileEditing"/>

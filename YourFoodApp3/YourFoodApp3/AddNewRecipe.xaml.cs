@@ -38,5 +38,16 @@ namespace YourFoodApp3
         {
             await Navigation.PushAsync(new RecipeForm());
         }
+
+        private void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddedRecipe addedrecipe = (AddedRecipe)e.CurrentSelection.FirstOrDefault();
+
+            if (addedrecipe != null)
+            {
+                Navigation.PushAsync(new AddedRecipeDetails(addedrecipe));
+                ((CollectionView)sender).SelectedItem = null;
+            }
+        }
     }
 }

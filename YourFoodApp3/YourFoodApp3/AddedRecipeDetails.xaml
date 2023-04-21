@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YourFoodApp3.AddedRecipeDetails" Title="Recipe Details">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <StackLayout>
+                    <Label Text="{Binding RecipeName}" FontSize="Large" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="20" FontFamily="Rubik" />
+                    <Image Source="{Binding Image}" Aspect="AspectFit"  WidthRequest="200" HeightRequest="200" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="15">
+                        <Label Text="{StaticResource IconTime}" FontSize="25" FontFamily="FASolid"/>
+                        <Label Text="{Binding Time}" FontSize="Medium" />
+                    </StackLayout>
+                    <Label Text="Description" FontFamily="Rubik" FontSize="20" LineBreakMode="WordWrap" Padding="20,20,0,0" TextDecorations="Underline" />
+                    <Label Text="{Binding Description}" FontSize="Medium" LineBreakMode="WordWrap" Padding="20,0,0,0" Margin="0,0,0,20"  />
+                    <Label Text="Ingredients" FontFamily="Rubik" FontSize="20" LineBreakMode="WordWrap" Margin="0,15,0,0" Padding="20,0,0,0" TextDecorations="Underline" />
+                    <Label Text="{Binding Ingredients}" FontSize="Medium" LineBreakMode="WordWrap" Padding="20,0,20,0" Margin="0,0,0,20" />
+                    <Label Text="Steps to cook" FontFamily="Rubik" FontSize="20" LineBreakMode="WordWrap" Margin="0,15,0,0" Padding="20,0,0,0" TextDecorations="Underline" />
+                    <Label Text="{Binding Steps}" FontSize="Medium" LineBreakMode="WordWrap" Margin="0,0,0,20" Padding="20,0,20,0"/>
+                </StackLayout>
+                <FlexLayout Direction="Row"
+                AlignItems="Center" Margin="0,0,0,50"
+                JustifyContent="SpaceEvenly">
+                    <Button x:Name="deleteButton" Text="Delete"  VerticalOptions="CenterAndExpand" WidthRequest="110" BackgroundColor="White" BorderColor="#FF8400" BorderWidth="2" FontAttributes="Bold" Clicked="OnDeleteClick"/>
+                    <Button x:Name="editButton" Text="Edit" VerticalOptions="CenterAndExpand" WidthRequest="110" BackgroundColor="#FF8400" TextColor="White" FontAttributes="Bold" Clicked="OnEditClick"/>
+                </FlexLayout>
+            </StackLayout>
+        </ScrollView>
+            
+    </ContentPage.Content>
+</ContentPage>

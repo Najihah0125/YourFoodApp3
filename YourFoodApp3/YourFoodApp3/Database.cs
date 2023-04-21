@@ -64,5 +64,17 @@ namespace YourFoodApp3
                 await _database.UpdateAsync(row);
             }
         }
+
+        //delete added recipe
+        public Task<int> DeleteRecipe(AddedRecipe addedRecipe)
+        {
+            return _database.DeleteAsync(addedRecipe);
+        }
+
+        //update added recipe
+        public Task<int> UpdateAddedRecipe(AddedRecipe addedRecipe)
+        {
+            return _database.UpdateAsync(addedRecipe);
+        }
     }
 }

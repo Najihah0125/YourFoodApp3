@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace YourFoodApp3
 {
@@ -15,6 +16,6 @@ namespace YourFoodApp3
         public string Ingredients { get; set; }
         public string Steps { get; set; }
         public string Bookmark { get; set; }
-        public string Image { get; set; }
+        public string Image { get; set; }       
     }
 }

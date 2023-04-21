@@ -18,6 +18,20 @@ namespace YourFoodApp3
             InitializeComponent();
         }
 
+        AddedRecipe _addedRecipe;
+        public RecipeForm(AddedRecipe item)
+        {
+            InitializeComponent();
+            Title = "Edit Recipe";
+            inputRecipeName.Text = item.RecipeName;
+            inputDescription.Text = item.Description;
+            inputTime.Text = item.Time;
+            inputIngredients.Text = item.Ingredients;
+            inputSteps.Text = item.Steps;
+            imagePath = item.Image;
+
+        }
+
         async void OnButtonClick(object sender, EventArgs e)
         {
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
@@ -29,14 +43,15 @@ namespace YourFoodApp3
                 var stream = await result.OpenReadAsync();
                 resultImage.Source = ImageSource.FromStream(() => stream);
                 imagePath = result.FullPath;
-            }
-            
+            }            
         }
 
         async void OnSubmitClick(object sender, EventArgs e)
         {
-            
-
+            if (_addedRecipe != null)
+            {
+                EditRecipe();
+            }
             await App.Database.AddRecipeAsync(new AddedRecipe
             {
                 RecipeName = inputRecipeName.Text,
@@ -44,9 +59,21 @@ namespace YourFoodApp3
                 Time = inputTime.Text,
                 Ingredients = inputIngredients.Text,
                 Steps= inputSteps.Text,
-                Image = imagePath,
-                
+                Image = imagePath,                
         });
+            await Navigation.PushAsync(new AddNewRecipe());
+        }
+
+        async void EditRecipe()
+        {
+            _addedRecipe.RecipeName = inputRecipeName.Text;
+            _addedRecipe.Description = inputDescription.Text;
+            _addedRecipe.Time = inputTime.Text;
+            _addedRecipe.Image = imagePath;
+            _addedRecipe.Ingredients = inputIngredients.Text;
+            _addedRecipe.Steps = inputSteps.Text;
+
+            await App.Database.UpdateAddedRecipe(_addedRecipe);
             await Navigation.PushAsync(new AddNewRecipe());
         }
     }

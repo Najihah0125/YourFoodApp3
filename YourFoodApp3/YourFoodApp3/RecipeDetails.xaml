@@ -6,7 +6,7 @@
         <ScrollView>
             <StackLayout>
                 <Label Text="{Binding RecipeName}" FontSize="Large" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="20" FontFamily="Rubik" />
-                <Image  Source="splash.png" Aspect="AspectFit"  WidthRequest="200" HeightRequest="200" />
+                <Image  Source="{Binding Image}" Aspect="AspectFit"  WidthRequest="200" HeightRequest="200" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="15">
                     <Label Text="{StaticResource IconTime}" FontSize="25" FontFamily="FASolid"/>
                     <Label Text="{Binding Time}" FontSize="Medium" />
