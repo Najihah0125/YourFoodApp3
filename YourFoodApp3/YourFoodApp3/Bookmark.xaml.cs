@@ -32,5 +32,26 @@ namespace YourFoodApp3
             base.OnAppearing();
             collectionView.ItemsSource = await App.Database.GetBookmarkedRecipeAsync();
         }
+
+        private void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PreloadedRecipe recipe = (PreloadedRecipe)e.CurrentSelection.FirstOrDefault();
+
+            if (recipe != null)
+            {
+                Navigation.PushAsync(new RecipeDetails(recipe));
+                ((CollectionView)sender).SelectedItem = null;
+            }
+        }
+
+        private async void OnTrashTapped(object sender, EventArgs e)
+        {
+            Label tappedLabel = (Label)sender;
+            PreloadedRecipe item = tappedLabel.BindingContext as PreloadedRecipe;
+
+            int rowId = item.Id;
+            await App.Database.UpdateBookmark(rowId, "no");
+            await DisplayAlert("Alert", "Removed from bookmark!", "OK");                       
+        }
     }
 }
