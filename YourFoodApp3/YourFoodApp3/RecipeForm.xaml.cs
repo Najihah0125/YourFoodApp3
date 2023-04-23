@@ -22,6 +22,7 @@ namespace YourFoodApp3
         public RecipeForm(AddedRecipe item)
         {
             InitializeComponent();
+            _addedRecipe = item;
             Title = "Edit Recipe";
             inputRecipeName.Text = item.RecipeName;
             inputDescription.Text = item.Description;
@@ -29,6 +30,8 @@ namespace YourFoodApp3
             inputIngredients.Text = item.Ingredients;
             inputSteps.Text = item.Steps;
             imagePath = item.Image;
+
+            resultImage.Source = imagePath;
 
         }
 
@@ -51,17 +54,20 @@ namespace YourFoodApp3
             if (_addedRecipe != null)
             {
                 EditRecipe();
-            }
-            await App.Database.AddRecipeAsync(new AddedRecipe
+            } 
+            else
             {
-                RecipeName = inputRecipeName.Text,
-                Description = inputDescription.Text,
-                Time = inputTime.Text,
-                Ingredients = inputIngredients.Text,
-                Steps= inputSteps.Text,
-                Image = imagePath,                
-        });
-            await Navigation.PushAsync(new AddNewRecipe());
+                await App.Database.AddRecipeAsync(new AddedRecipe
+                {
+                    RecipeName = inputRecipeName.Text,
+                    Description = inputDescription.Text,
+                    Time = inputTime.Text,
+                    Ingredients = inputIngredients.Text,
+                    Steps = inputSteps.Text,
+                    Image = imagePath,
+                });
+                await Navigation.PushAsync(new AddNewRecipe());
+            }                        
         }
 
         async void EditRecipe()
