@@ -9,14 +9,14 @@
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}">
       <ListView.Header>
-        <Grid BackgroundColor="#03A9F4">
+          <Grid BackgroundColor="#FFD56F">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10"/>
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
@@ -25,6 +25,7 @@
               Grid.Column="1"
               Grid.Row="2"
               Text="Your Food"
+              FontSize="Large"
               Style="{DynamicResource SubtitleStyle}"/>
         </Grid>
       </ListView.Header>
