@@ -11,7 +11,7 @@ using System.Text;
 
 namespace YourFoodApp3.Droid
 {
-    [Activity(Label = "SplashActivity", Theme = "@style/Splash", MainLauncher = true)]
+    [Activity(Label = "Your Food", Icon = "@drawable/ic_launcher", Theme = "@style/Splash", MainLauncher = true)]
     public class SplashActivity : Activity
     {
         public SplashActivity()
